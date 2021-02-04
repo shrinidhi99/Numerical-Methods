@@ -1,4 +1,6 @@
+from math import inf
 from cmath import sqrt
+
 
 def muller(f, x0, x1, x2, tol, N):
     """
@@ -13,7 +15,7 @@ def muller(f, x0, x1, x2, tol, N):
     n: int
         maximum number of iterations
     """
-    print('x0:',x0, '\nx1:', x1, '\nx2:', x2)
+    print('x0:', x0, '\nx1:', x1, '\nx2:', x2)
     n = 1
     while n <= N:
         h1 = x1 - x0
@@ -28,7 +30,7 @@ def muller(f, x0, x1, x2, tol, N):
         c = f(x2)               # corresponds to c
         D = sqrt(b**2 - 4*f(x2)*d)      # corresponds to (b^2-4ac)^0.5
         E = b+D if abs(b-D) < abs(b+D) else b-D
-        
+
         # Root approximation
         h = -2*f(x2)/E
         x = x2 + h
@@ -36,22 +38,23 @@ def muller(f, x0, x1, x2, tol, N):
         print('Iteration', n, 'x', x, 'f(x)', f(x))
         if abs(h) < tol:
             break
-        n += 1 
+        n += 1
         # Update sequence variables
         x0 = x1
         x1 = x2
-        x2 = x 
+        x2 = x
     return x2
 
 
-## Using muller's method
+# Using muller's method
 
-from math import inf
 
-f = lambda x: x**3 - 5*x - 1
-x0 = 0
-x1 = 0.5
-x2 = 1
+def f(x): return x**4 - 4*x**2 - 3*x + 5
+
+
+x0 = -1
+x1 = complex(-1,1);
+x2 = complex(-1, 0.9)
 tol = 1e-6
 n = 10
 

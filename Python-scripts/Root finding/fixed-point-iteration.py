@@ -8,9 +8,9 @@ y_l = []
 
 for i in range(50):
     if i == 0:
-        g_x = math.exp(-1*x) * math.cos(x)
+        g_x = 1 / math.sqrt(1 + x)  # math.exp(-1*x) #* math.cos(x)
     else:
-        g_x = math.exp(-1*g_x) * math.cos(g_x)
+        g_x = 1 / math.sqrt(1 + g_x)  # math.exp(-1*g_x) #* math.cos(g_x)
     # print(g_x)
     x_l.append(i)
     y_l.append(g_x)

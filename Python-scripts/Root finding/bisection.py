@@ -4,7 +4,9 @@ def f(x):
     return x**6 - x - 1
 
 # Implementing Bisection Method
-def bisection(x0,x1,e):
+
+
+def bisection(x0, x1, e):
     step = 1
     print('\n\n*** BISECTION METHOD IMPLEMENTATION ***')
     condition = True
@@ -16,7 +18,7 @@ def bisection(x0,x1,e):
             x1 = x2
         else:
             x0 = x2
-        
+
         step = step + 1
         # uncomment this if you want function value to be within error
         # condition = abs(f(x2)) > e
@@ -39,4 +41,4 @@ if f(x0) * f(x1) > 0.0:
     print('Given guess values do not bracket the root.')
     print('Try Again with different guess values.')
 else:
-    bisection(x0,x1,e)
+    bisection(x0, x1, e)

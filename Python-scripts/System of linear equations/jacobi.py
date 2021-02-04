@@ -1,6 +1,7 @@
 
 import numpy as np
 
+
 def jacobi(dim, A, B, X0, tol, n):
     """
     Arguments
@@ -35,15 +36,16 @@ def jacobi(dim, A, B, X0, tol, n):
         if np.max(abs(X0 - X1)) < tol:
             break
         iterations += 1
-        X0 = X1  
+        X0 = X1
     return X1
 
+
 A = np.array([
-    [15, 3, -2],
-    [2, 10, 1],
-    [1, -2, 8]
-    ], dtype=float)
-B = np.array([85, 51, 5], dtype=float)
+    [-10, -8, 0],
+    [-8, 10, -1],
+    [0, -1, 10]
+], dtype=float)
+B = np.array([-6, 9, 28], dtype=float)
 
 dim = A.shape[0]
 tol = 1e-5

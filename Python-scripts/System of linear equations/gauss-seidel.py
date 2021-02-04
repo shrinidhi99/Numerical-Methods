@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def gauss_siedel(dim, A, B, X0, tol, n):
     """
     Arguments
@@ -28,21 +29,22 @@ def gauss_siedel(dim, A, B, X0, tol, n):
                 X1[i] += (-A[i][j]*X0[j])
             X1[i] += B[i]
             X1[i] /= A[i][i]
-        
+
         print('n:', iterations, 'X:', X1)
-        
+
         if np.max(abs(X0 - X1)) < tol:
             break
         iterations += 1
-        X0 = X1     
+        X0 = X1
     return X1
 
+
 A = np.array([
-    [8, 2, -2],
-    [1, -8, 3],
-    [2, 1, 9]
-    ], dtype=float)
-B = np.array([8, -4, 12], dtype=float)
+    [-10, -8, 0],
+    [-8, 10, -1],
+    [0, -1, 10]
+], dtype=float)
+B = np.array([-6, 9, 28], dtype=float)
 
 dim = A.shape[0]
 tol = 1e-5
