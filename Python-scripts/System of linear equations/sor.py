@@ -1,5 +1,6 @@
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 
 def SOR(dim, A, B, ω, X0, tol, n):
@@ -37,6 +38,10 @@ def SOR(dim, A, B, ω, X0, tol, n):
             X1[i] += (1-ω)*X0[i]
 
         print('n:', iterations, 'X:', X1)
+        epochs.append(iterations)
+        x_one.append(X1[0])
+        x_two.append(X1[1])
+        x_three.append(X1[2])
 
         if np.max(abs(X0 - X1)) < tol:
             break
@@ -69,4 +74,22 @@ for i in range(dim):
         print('A is not diagonally dominant. Change A and B accordingly')
         exit()
 
+epochs = []
+x_one = []
+x_two = []
+x_three = []
+
 SOR(dim, A, B, ω, init_approx, tol, n)
+
+plt.plot(epochs, x_one, label='X1')
+plt.plot(epochs, x_two, label='X2')
+plt.plot(epochs, x_three, label='X3')
+
+# naming the x axis
+plt.xlabel('iterations')
+# naming the y axis
+plt.ylabel('X')
+# giving a title to my graph
+plt.title('Jacobi')
+plt.legend(loc='upper left')
+plt.show()
