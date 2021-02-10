@@ -1,5 +1,6 @@
 # Fixed Point Iteration Method
 import math
+import matplotlib.pyplot as plt
 
 
 def f(x):
@@ -26,6 +27,11 @@ def fixedPointIteration(x0, e, N):
 
         x1 = g(x0)
         print('Iteration-%d, x1 = %0.6f and f(x1) = %0.6f' % (step, x1, f(x1)))
+
+        epochs.append(step)
+        x1_val.append(x1)
+        fx_val.append(f(x1))
+
         x0 = x1
 
         step = step + 1
@@ -53,5 +59,18 @@ e = 1e-4
 # Max iterations
 N = 10
 
+epochs = []
+x1_val = []
+fx_val = []
+
 # Starting Fixed point Method
 fixedPointIteration(x0, e, N)
+
+plt.scatter(x1_val, fx_val, s=20, marker='x')
+# naming the x axis
+plt.xlabel('x')
+# naming the y axis
+plt.ylabel('f(x)')
+# giving a title to my graph
+plt.title('Fixed point iteration')
+plt.show()

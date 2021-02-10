@@ -1,4 +1,3 @@
-
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -23,6 +22,12 @@ def SOR(dim, A, B, ω, X0, tol, n):
         maximum number of iterations
     """
     print('n:', 0, 'X:', X0)
+
+    epochs.append(0)
+    x_one.append(X0[0])
+    x_two.append(X0[1])
+    x_three.append(X0[2])
+
     iterations = 1
     while iterations <= n:
         X1 = np.array(dim*[0.])
@@ -38,8 +43,6 @@ def SOR(dim, A, B, ω, X0, tol, n):
             X1[i] += (1-ω)*X0[i]
 
         print('n:', iterations, 'X:', X1)
-        epochs.append(iterations)
-        x_one.append(X1[0])
         x_two.append(X1[1])
         x_three.append(X1[2])
 
@@ -90,6 +93,6 @@ plt.xlabel('iterations')
 # naming the y axis
 plt.ylabel('X')
 # giving a title to my graph
-plt.title('Jacobi')
+plt.title('SOR')
 plt.legend(loc='upper left')
 plt.show()

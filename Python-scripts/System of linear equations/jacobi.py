@@ -22,6 +22,12 @@ def jacobi(dim, A, B, X0, tol, n):
     """
 
     print('n:', 0, 'X:', X0)
+
+    epochs.append(0)
+    x_one.append(X0[0])
+    x_two.append(X0[1])
+    x_three.append(X0[2])
+
     iterations = 1
     while iterations <= n:
         X1 = np.array(dim * [0.])

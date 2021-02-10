@@ -1,4 +1,5 @@
 import math
+import matplotlib.pyplot as plt
 
 # Defining Function
 
@@ -29,6 +30,7 @@ def newtonRaphsonMultiRoot(x0, e, N):
     step = 1
     flag = 1
     condition = True
+
     while condition:
         if g(x0)**2 - f(x0)*h(x0) == 0.0:
             print('Divide by zero error!')
@@ -37,6 +39,10 @@ def newtonRaphsonMultiRoot(x0, e, N):
         prev_x0 = x0
         x1 = x0 - (f(x0) * g(x0))/(g(x0)**2 - f(x0)*h(x0))
         print('Iteration-%d, x1 = %0.6f and f(x1) = %0.6f' % (step, x1, f(x1)))
+        epochs.append(step)
+        x1_val.append(x1)
+        fx_val.append(f(x1))
+
         x0 = x1
         step = step + 1
 
@@ -59,9 +65,23 @@ def newtonRaphsonMultiRoot(x0, e, N):
 # Initial guess
 x0 = -1
 # Error
-e = 1e-6
+e = 1e-5
 # Max iterations
 N = 20
 
+epochs = []
+x1_val = []
+fx_val = []
+
 # Starting Multi-root Newton Raphson Method
 newtonRaphsonMultiRoot(x0, e, N)
+
+plt.scatter(x1_val, fx_val, s=20, marker='x')
+
+# naming the x axis
+plt.xlabel('x')
+# naming the y axis
+plt.ylabel('f(x)')
+# giving a title to my graph
+plt.title('Newton multiple roots')
+plt.show()

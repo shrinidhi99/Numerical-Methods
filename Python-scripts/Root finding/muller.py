@@ -53,7 +53,7 @@ def f(x): return x**4 - 4*x**2 - 3*x + 5
 
 
 x0 = -1
-x1 = complex(-1,1);
+x1 = complex(-1, 1)
 x2 = complex(-1, 0.9)
 tol = 1e-6
 n = 10

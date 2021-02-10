@@ -1,4 +1,8 @@
+import matplotlib.pyplot as plt
+
 # Defining Function
+
+
 def f(x):
     # Lecture example, give first guess = 1, second guess = 2
     return x**6 - x - 1
@@ -13,6 +17,9 @@ def bisection(x0, x1, e):
     while condition:
         x2 = (x0 + x1)/2
         print('Iteration-%d, x2 = %0.6f and f(x2) = %0.6f' % (step, x2, f(x2)))
+        epochs.append(step)
+        x2_val.append(x2)
+        fx_val.append(f(x2))
 
         if f(x0) * f(x2) < 0:
             x1 = x2
@@ -36,9 +43,24 @@ x1 = 2.0
 # Error
 e = 1e-3
 
+epochs = []
+x2_val = []
+fx_val = []
+
+
 # Checking Correctness of initial guess values and bisecting
 if f(x0) * f(x1) > 0.0:
     print('Given guess values do not bracket the root.')
     print('Try Again with different guess values.')
 else:
     bisection(x0, x1, e)
+    # plt.plot(epochs, x2_val, label='X')
+    plt.scatter(x2_val, fx_val, s=20, marker='x')
+
+    # naming the x axis
+    plt.xlabel('x')
+    # naming the y axis
+    plt.ylabel('f(x)')
+    # giving a title to my graph
+    plt.title('Bisection')
+    plt.show()
